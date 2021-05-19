@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '______login_____',
+              'Stealth Zero',
             ),
 
           ],
