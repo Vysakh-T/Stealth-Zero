@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "123557185403",
+    "project_id": "stealthzero",
+    "storage_bucket": "stealthzero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123557185403:android:9dc399c558477142f05fde",
+        "android_client_info": {
+          "package_name": "com.example.stealthzero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "123557185403-qmvng1bgp882rflkv9o1913fl1kav403.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApLmP7Hc9UPp83ykbkTinAp8VokjUybB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123557185403-qmvng1bgp882rflkv9o1913fl1kav403.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
