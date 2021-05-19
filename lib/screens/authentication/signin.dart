@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:stealthzero/screens/authentication/login.dart';
 import 'package:stealthzero/services/auth.dart';
