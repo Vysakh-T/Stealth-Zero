@@ -4,7 +4,8 @@ import 'package:stealthzero/services/auth.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
-  SignIn({ this.toggleView });
+
+  SignIn({this.toggleView});
 
   @override
   _SignInState createState() => _SignInState();
@@ -12,11 +13,13 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
   //text field state
   String email = '';
   String password = '';
   String name = '';
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -39,29 +42,35 @@ class _SignInState extends State<SignIn> {
               textAlign: TextAlign.center,
             ),
             Form(
+              key: _formKey,
               child: Column(
                 children: <Widget>[
                   SizedBox(height: 20.0),
-                  TextFormField(onChanged: (val) {
-                    setState(() {
-                      name = val;
-                    });
-                  }),
-                  SizedBox(height: 20.0),
-                  TextFormField(onChanged: (val) {
-                    setState(() {
-                      email = val;
-                    });
-                  }),
-                  SizedBox(height: 20.0),
                   TextFormField(
+                      validator: (val) => val.isEmpty ? 'Enter a name' : null,
+                      onChanged: (val) {
+                        setState(() {
+                          name = val;
+                        });
+                      }),
+                  SizedBox(height: 10.0),
+                  TextFormField(
+                      validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                      onChanged: (val) {
+                        setState(() {
+                          email = val;
+                        });
+                      }),
+                  SizedBox(height: 10.0),
+                  TextFormField(
+                      validator: (val) => val.length<6? 'Enter a password having more than 6 characters' : null,
                       obscureText: true,
                       onChanged: (val) {
                         setState(() {
                           password = val;
                         });
                       }),
-                  SizedBox(height: 20.0),
+                  SizedBox(height: 10.0),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xff557089),
@@ -74,17 +83,26 @@ class _SignInState extends State<SignIn> {
                           fontSize: 18.0),
                     ),
                     onPressed: () async {
-                      print(email);
-                      print(password);
+                      if (_formKey.currentState.validate()) {
+                        dynamic result = await _auth.signUp(name, email, password);
+                        if( result == null){
+                          setState(() {
+                            error = 'please supply a valid email';
+                          });
+
+                        }
+                      }
                     },
                   ),
                   TextButton.icon(
                     label: Text('Already have an account? Login here'),
                     icon: Icon(Icons.login),
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.pop(context);
-
                     },
+                  ),
+                  Text(error,
+                  style: TextStyle(color: Colors.red, fontSize:14.0),
                   )
                 ],
               ),
