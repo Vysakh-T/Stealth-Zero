@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:stealthzero/models/user.dart';
 import 'package:stealthzero/screens/authentication/log_signin.dart';
 import 'package:stealthzero/screens/authentication/login.dart';
+import 'package:stealthzero/screens/authentication/signin.dart';
 
 class Wrapper extends StatelessWidget {
 
@@ -10,7 +11,7 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
    if (user == null){
-     return Authenticate();
+     return SignIn();
    } else {
      return Home();
    }

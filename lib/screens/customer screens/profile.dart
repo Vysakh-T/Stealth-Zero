@@ -9,14 +9,23 @@ class Profile extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
+      body: Center(
        child: ElevatedButton(onPressed: () async{
          await _auth.signOut();},
-        child: new Text('Sign Out',
-        style: new TextStyle(
-          color: Colors.indigo[750],
+        child: Text('Sign Out',
+        style: TextStyle(
+          color: Color(0xffffffff),
          ),
         ),
+         style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith<Color>(
+             (Set<MaterialState> states){
+               // ignore: missing_return
+               if(states.contains(MaterialState.pressed)) {
+                 return Color(0xff557089);
+               }
+               return null;
+             }
+         )),
       ),
       ),
     );
