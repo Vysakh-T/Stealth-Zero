@@ -3,9 +3,9 @@ import 'package:stealthzero/screens/authentication/login.dart';
 import 'package:stealthzero/services/auth.dart';
 
 class SignIn extends StatefulWidget {
-  final Function toggleView;
+  //final Function toggleView;
 
-  SignIn({this.toggleView});
+ //ignIn({this.toggleView});
 
   @override
   _SignInState createState() => _SignInState();
@@ -18,7 +18,6 @@ class _SignInState extends State<SignIn> {
   //text field state
   String email = '';
   String password = '';
-  String name = '';
   String error = '';
 
   @override
@@ -46,15 +45,11 @@ class _SignInState extends State<SignIn> {
               child: Column(
                 children: <Widget>[
                   SizedBox(height: 20.0),
-                  TextFormField(
-                      validator: (val) => val.isEmpty ? 'Enter a name' : null,
-                      onChanged: (val) {
-                        setState(() {
-                          name = val;
-                        });
-                      }),
                   SizedBox(height: 10.0),
                   TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'email',
+                    ),
                       validator: (val) => val.isEmpty ? 'Enter an email' : null,
                       onChanged: (val) {
                         setState(() {
@@ -63,6 +58,9 @@ class _SignInState extends State<SignIn> {
                       }),
                   SizedBox(height: 10.0),
                   TextFormField(
+                    decoration: InputDecoration(
+                      hintText: 'password',
+                    ),
                       validator: (val) => val.length<6? 'Enter a password having more than 6 characters' : null,
                       obscureText: true,
                       onChanged: (val) {
@@ -84,8 +82,8 @@ class _SignInState extends State<SignIn> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
-                        dynamic result = await _auth.signUp(name, email, password);
-                        if( result == null){
+                        dynamic result = await _auth.signUp(email, password);
+                        if(result == null){
                           setState(() {
                             error = 'please supply a valid email';
                           });
@@ -98,7 +96,10 @@ class _SignInState extends State<SignIn> {
                     label: Text('Already have an account? Login here'),
                     icon: Icon(Icons.login),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LogIn()),
+                      );
                     },
                   ),
                   Text(error,
