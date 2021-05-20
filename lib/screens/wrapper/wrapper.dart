@@ -6,14 +6,13 @@ import 'package:stealthzero/screens/authentication/login.dart';
 import 'package:stealthzero/screens/authentication/signin.dart';
 
 class Wrapper extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-   if (user == null){
-     return SignIn();
-   } else {
-     return Home();
-   }
+    if (user == null) {
+      return SignIn();
+    } else {
+      return Home();
+    }
   }
 }
