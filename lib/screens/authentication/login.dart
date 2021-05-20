@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stealthzero/screens/authentication/login.dart';
 import 'package:stealthzero/screens/authentication/signin.dart';
 import 'package:stealthzero/services/auth.dart';
+import 'package:stealthzero/shared/loading.dart';
 
 class LogIn extends StatefulWidget {
  /* final Function toggleView;
@@ -16,6 +16,7 @@ class LogIn extends StatefulWidget {
 class _LogInState extends State<LogIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   //text field state
   String email = '';
@@ -26,7 +27,7 @@ class _LogInState extends State<LogIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.white,
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
@@ -82,8 +83,14 @@ class _LogInState extends State<LogIn> {
                     ),
                     onPressed: () async {
                       if(_formKey.currentState.validate()){
+                        setState(() {
+                          loading = true;
+                        });
                         dynamic result = await _auth.logInWithEmail(email, password);
                         if(result == null){
+                          setState(() {
+                            loading = false;
+                          });
                           setState(() {
                             error = 'could not sign in with those credentials';
                           });

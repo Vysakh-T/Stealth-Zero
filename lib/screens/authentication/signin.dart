@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stealthzero/screens/authentication/login.dart';
 import 'package:stealthzero/services/auth.dart';
+import 'package:stealthzero/shared/loading.dart';
 
 class SignIn extends StatefulWidget {
   //final Function toggleView;
@@ -14,6 +15,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   //text field state
   String email = '';
@@ -22,7 +24,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.white,
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
@@ -82,8 +84,14 @@ class _SignInState extends State<SignIn> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
+                        setState(() {
+                          loading = true;
+                        });
                         dynamic result = await _auth.signUp(email, password);
                         if(result == null){
+                          setState(() {
+                            loading = false;
+                          });
                           setState(() {
                             error = 'please supply a valid email';
                           });
