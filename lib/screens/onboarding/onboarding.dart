@@ -10,25 +10,36 @@ class OnBoarding extends StatelessWidget {
       backgroundColor: kPrimaryColor,
       body: Stack(
         children: [
-          Center(child: Image(image: AssetImage('Loading.jpg'))),
-          Column(
-            children: [
-              Text('StealthZero',
-                  style: TextStyle(
+          Center(
+              child: Image(image: AssetImage('./assets/images/Loading.jpg'))),
+          Container(
+            constraints: BoxConstraints.expand(),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 130,
+                ),
+                Text('StealthZero',
+                    style: TextStyle(
                       fontSize: 32,
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.w900,
-                      color: kWhite)),
-              Text('Scan Your Way,\n    On The Go.',
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w800,
-                      fontStyle: FontStyle.italic,
-                      color: kWhite))
-            ],
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      color: Colors.white,
+                    )),
+                SizedBox(
+                  height: 10,
+                ),
+                Text('Scan Your Way,\n                 On The Go.',
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w800,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.white))
+              ],
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            ),
           )
         ],
       ),
