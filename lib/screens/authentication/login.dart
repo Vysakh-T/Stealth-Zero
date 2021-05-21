@@ -1,9 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stealthzero/screens/authentication/signin.dart';
 import 'package:stealthzero/services/auth.dart';
-import 'package:stealthzero/shared/loading.dart';
+import 'package:stealthzero/shared/load.dart';
+
 
 class LogIn extends StatefulWidget {
  /* final Function toggleView;
