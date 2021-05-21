@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:stealthzero/screens/wrapper/wrapper.dart';
 import 'package:stealthzero/services/auth.dart';
 import 'models/user.dart';
-import 'screens/onboarding/onboarding.dart';
+import 'screens/authentication/login.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     //   ),
     // );
     return MaterialApp(
-      home: OnBoarding(),
+      home: LogIn(),
       debugShowCheckedModeBanner: false,
     );
   }
