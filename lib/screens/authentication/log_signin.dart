@@ -6,27 +6,21 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
-        child: Column(
-          children: [
-            Text('WELCOME HOME',
-                style: TextStyle(fontFamily: 'Montserrat', fontSize: 20.0)
-            ),
-            TextButton(
-                child: Text('Nothing to see here, back to sign in '),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignIn()),
-                  );
-                }
-            ),
-          ],
-        ),
-
+      body: Stack(
+        children: [
+          Container(
+              constraints: BoxConstraints.expand(),
+              child: Column(
+                children: [
+                  Image(image: AssetImage('assets/images/Vector-3.png')),
+                  Image(
+                      image: AssetImage('assets/images/Open Doodleslogin.png'))
+                ],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+              )),
+        ],
       ),
-
-
     );
   }
 }
