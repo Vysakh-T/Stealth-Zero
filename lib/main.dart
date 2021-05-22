@@ -5,6 +5,7 @@ import 'package:stealthzero/screens/wrapper/wrapper.dart';
 import 'package:stealthzero/services/auth.dart';
 import 'models/user.dart';
 import 'screens/authentication/log_signin.dart';
+import 'package:stealthzero/constants.dart';
 
 void main() {
   runApp(MyApp());
