@@ -1,5 +1,5 @@
 //first screen after splash screen, asking whether to login or sign in
-
+/*
 import 'package:flutter/material.dart';
 import 'package:stealthzero/screens/authentication/login.dart';
 import 'package:stealthzero/screens/authentication/signin.dart';
@@ -67,3 +67,4 @@ class Home extends StatelessWidget {
     );
   }
 }
+*/
