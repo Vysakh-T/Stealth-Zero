@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stealthzero/screens/authentication/signin.dart';
+import 'package:stealthzero/screens/customer%20screens/profile.dart';
 import 'package:stealthzero/services/auth.dart';
 import 'package:stealthzero/shared/load.dart';
 
@@ -112,7 +112,15 @@ class _LogInState extends State<LogIn> {
                               setState(() {
                                 error =
                                     'could not sign in with those credentials';
-                              });
+                              }
+                              );
+                            }
+                            else {
+
+                            Navigator.push(context,
+                            // ignore: unnecessary_statements
+                            MaterialPageRoute(builder: (context) => Profile()),
+                            );
                             }
                           }
                         },

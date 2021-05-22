@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stealthzero/screens/authentication/log_signin.dart';
 import 'package:stealthzero/screens/wrapper/wrapper.dart';
 import 'package:stealthzero/services/auth.dart';
 import 'models/user.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
         value: AuthService().user,
      child: MaterialApp(
-         home: Wrapper(),
+         home: Home(),
        ),
      );
   }
