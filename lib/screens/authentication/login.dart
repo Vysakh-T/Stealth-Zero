@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:stealthzero/screens/authentication/signin.dart';
+import 'package:stealthzero/screens/customer%20screens/profile.dart';
 import 'package:stealthzero/services/auth.dart';
 import 'package:stealthzero/shared/load.dart';
 
@@ -15,6 +15,7 @@ class LogIn extends StatefulWidget {
 class _LogInState extends State<LogIn> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  bool loading = false;
 
   //text field state
   String email = '';
@@ -25,7 +26,7 @@ class _LogInState extends State<LogIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading? Loading() : Scaffold(
       appBar: AppBar(
         title: Image(image: AssetImage('assets/images/SZ.png')),
         backgroundColor: Colors.white,
@@ -100,13 +101,26 @@ class _LogInState extends State<LogIn> {
                         ),
                         onPressed: () async {
                           if (_formKey.currentState.validate()) {
-                            dynamic result =
-                                await _auth.logInWithEmail(email, password);
+                            dynamic result = await _auth.logInWithEmail(email, password);
+                            setState(() {
+                              loading = true;
+                            });
                             if (result == null) {
+                              setState(() {
+                                loading = false;
+                              });
                               setState(() {
                                 error =
                                     'could not sign in with those credentials';
-                              });
+                              }
+                              );
+                            }
+                            else {
+
+                            Navigator.push(context,
+                            // ignore: unnecessary_statements
+                            MaterialPageRoute(builder: (context) => Profile()),
+                            );
                             }
                           }
                         },
