@@ -1,31 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:stealthzero/screens/authentication/signin.dart';
-import 'package:stealthzero/screens/customer%20screens/profile.dart';
+import 'package:stealthzero/services/auth.dart';
 
 class CustomerHome extends StatelessWidget {
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Image(image: AssetImage('assets/images/SZ.png')),
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        centerTitle: true,
+         actions: <Widget>[
+           TextButton.icon(
+             style: TextButton.styleFrom(
+               primary: Color(0xff557089),
+
+               ),
+               onPressed: ()  async {
+                 await _auth.signOut();
+               },
+               icon: Icon(Icons.account_circle_rounded),
+               label: Text('sign out'))
+         ],
+      ),
       body: Container(
         child: Column(
           children: [
             Text('WELCOME HOME',
-                style: TextStyle(fontFamily: 'Montserrat', fontSize: 20.0)),
-            TextButton(
-                child: Text('Nothing to see here, back to sign in '),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignIn()),
-                  );
-                }),
-            TextButton.icon(onPressed: (){
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Profile()),);
-                },
-                icon: Icon(Icons.account_circle_rounded), label: Text('sign out')
+                style: TextStyle(fontFamily: 'Montserrat', fontSize: 20.0)
+              ),
+            ElevatedButton(onPressed: (){},
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xff557089),
+                ),
+                child: Text('Scan QR code',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  ),
+                ),
             )
+
           ],
         ),
       ),
