@@ -41,7 +41,8 @@ class _SignInState extends State<SignIn> {
                     child: Column(
                       children: [
                         Image(
-                            image: AssetImage('assets/images/Open Doodles.png'))
+                            image:
+                                AssetImage('assets/images/Open Doodles-1.png'))
                       ],
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -51,17 +52,18 @@ class _SignInState extends State<SignIn> {
                       EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
                   child: Column(
                     children: [
-                      SizedBox(height: 30.0),
-                      Image(image: AssetImage('assets/images/SZlogin.png')),
-                      SizedBox(height: 20.0),
+                      SizedBox(height: 70.0),
                       Text(
-                        'Sign Up for StealthZero',
+                        'Sign In.',
                         style: TextStyle(
-                            color: Color(0xff557089),
+                            color: Colors.indigo[400],
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Montserrat',
-                            fontSize: 30.0),
+                            fontSize: 56.0),
                         textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 20,
                       ),
                       Form(
                         key: _formKey,
@@ -94,17 +96,23 @@ class _SignInState extends State<SignIn> {
                                     password = val;
                                   });
                                 }),
-                            SizedBox(height: 10.0),
+                            SizedBox(height: 40.0),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xff557089),
-                              ),
+                                  primary: Colors.indigo[400],
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 62.0, vertical: 12.0),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10)))),
                               child: Text(
-                                'Register',
+                                'Sign In',
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Montserrat',
-                                    fontSize: 18.0),
+                                  color: Colors.white,
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 24.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               onPressed: () async {
                                 if (_formKey.currentState.validate()) {
