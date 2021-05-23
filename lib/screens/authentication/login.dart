@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stealthzero/screens/customer%20screens/cust_home.dart';
-import 'package:stealthzero/screens/customer%20screens/profile.dart';
 import 'package:stealthzero/services/auth.dart';
 import 'package:stealthzero/shared/load.dart';
 
