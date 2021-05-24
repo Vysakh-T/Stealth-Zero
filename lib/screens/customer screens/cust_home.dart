@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stealthzero/screens/QR%20screens/scanner.dart';
 import 'package:stealthzero/services/auth.dart';
 
 class CustomerHome extends StatelessWidget {
@@ -31,7 +32,10 @@ class CustomerHome extends StatelessWidget {
             Text('WELCOME HOME',
                 style: TextStyle(fontFamily: 'Montserrat', fontSize: 20.0)
               ),
-            ElevatedButton(onPressed: (){},
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
+                  QrScanner()));
+            },
                 style: ElevatedButton.styleFrom(
                   primary: Color(0xff557089),
                 ),
