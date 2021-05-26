@@ -8,7 +8,7 @@ StealthZero: A tracker app for merchants and shop owners. StealthZero lets custo
 ## Team Id
 BFH/rec1fLIDJUD5mTcyO/2021
 ## Link to product walkthrough
-[link to video]
+https://www.loom.com/share/49a1769aeb9144c38336f01dbc15a6f6
 ## How it Works ?
 1. Sign in to create a new account in our database
 2. Login as customer to scan the QR code
